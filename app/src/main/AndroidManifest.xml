@@ -10,25 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.drivermanager.activity.MeetingShenPiActivity"></activity>
-        <activity android:name="com.example.drivermanager.activity.MeetingDetailActivity" />
         <activity android:name="com.example.drivermanager.activity.SystemActivity" />
-        <activity android:name="com.example.drivermanager.activity.EquipmentActivity" />
         <activity android:name="com.example.drivermanager.activity.UserManagerActivity" />
-        <activity android:name="com.example.drivermanager.activity.OrderActivity" />
+        <activity android:name="com.example.drivermanager.activity.SelfServiceDataActivity" />
         <activity android:name="com.example.drivermanager.activity.RegisterActivity" />
-        <activity android:name="com.example.drivermanager.activity.LoginActivity">
+        <activity android:name="com.example.drivermanager.activity.LoginActivity" />
+        <activity android:name="com.example.drivermanager.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.drivermanager.activity.SplashActivity" />
         <activity android:name="com.example.drivermanager.activity.MainActivity" />
-        <activity android:name="com.example.drivermanager.activity.AddOrderActivity" />
-        <activity android:name="com.example.drivermanager.activity.EquipmentDetailActivity" />
-        <activity android:name="com.example.drivermanager.activity.AddEquipmentActivity" />
+        <activity android:name=".activity.AllServiceDataActivity" />
+        <activity android:name=".activity.ServiceDataDetailActivity" />
     </application>
 
 </manifest>

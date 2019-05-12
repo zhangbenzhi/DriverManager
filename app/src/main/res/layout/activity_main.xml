@@ -13,32 +13,25 @@
         android:layout_weight="1" />
 
     <Button
-        android:id="@+id/order"
+        android:id="@+id/self_service_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="运营申请" />
+        android:text="个人营运数据" />
 
     <Button
         android:id="@+id/user_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="用户信息" />
+        android:text="个人信息" />
 
     <Button
-        android:id="@+id/meeting_shenpi"
+        android:id="@+id/all_service_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="运营审批" />
-
-    <Button
-        android:id="@+id/equipment_manager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="出租车管理" />
+        android:text="全部营运数据" />
 
     <Button
         android:id="@+id/system_manager"

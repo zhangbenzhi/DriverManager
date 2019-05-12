@@ -18,13 +18,16 @@ public class UserBean implements Serializable {
     public Long id;
     public String userName;
     public String password;
-    //0 普通用户  1：管理员
+    public String phoneNumber;//手机号
+    //0 出租车司机  1：管理员
     public int type;
-    @Generated(hash = 1293577070)
-    public UserBean(Long id, String userName, String password, int type) {
+    @Generated(hash = 1943489407)
+    public UserBean(Long id, String userName, String password, String phoneNumber,
+            int type) {
         this.id = id;
         this.userName = userName;
         this.password = password;
+        this.phoneNumber = phoneNumber;
         this.type = type;
     }
     @Generated(hash = 1203313951)
@@ -53,6 +56,12 @@ public class UserBean implements Serializable {
     }
     public void setType(int type) {
         this.type = type;
+    }
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
 }

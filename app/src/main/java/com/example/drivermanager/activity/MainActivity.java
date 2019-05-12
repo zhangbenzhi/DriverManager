@@ -17,16 +17,14 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.order)
-    Button btnOrder;
+    @BindView(R.id.self_service_data)
+    Button selfService;
+    @BindView(R.id.all_service_data)
+    Button allService;
     @BindView(R.id.user_info)
     Button btnUserInfo;
-    @BindView(R.id.equipment_manager)
-    Button btnEquipmentManager;
     @BindView(R.id.system_manager)
     Button btnSystemManager;
-    @BindView(R.id.meeting_shenpi)
-    Button btnMeetingShenpi;
     @BindView(R.id.logout)
     Button logout;
 
@@ -40,39 +38,34 @@ public class MainActivity extends AppCompatActivity {
         UserBean userBean = MyApplication.userBean;
         switch (userBean.type) {
             case 0:
-                btnOrder.setVisibility(View.VISIBLE);
+                selfService.setVisibility(View.VISIBLE);
+                allService.setVisibility(View.GONE);
                 btnUserInfo.setVisibility(View.VISIBLE);
-                btnMeetingShenpi.setVisibility(View.GONE);
-                btnEquipmentManager.setVisibility(View.GONE);
                 btnSystemManager.setVisibility(View.GONE);
                 break;
             case 1:
-                btnOrder.setVisibility(View.GONE);
+                selfService.setVisibility(View.GONE);
+                allService.setVisibility(View.VISIBLE);
                 btnUserInfo.setVisibility(View.GONE);
-                btnMeetingShenpi.setVisibility(View.VISIBLE);
-                btnEquipmentManager.setVisibility(View.VISIBLE);
                 btnSystemManager.setVisibility(View.VISIBLE);
                 break;
         }
     }
 
-    @OnClick({R.id.order, R.id.user_info, R.id.equipment_manager, R.id.system_manager, R.id.meeting_shenpi, R.id.logout})
+    @OnClick({R.id.self_service_data, R.id.user_info, R.id.system_manager, R.id.all_service_data, R.id.logout})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.order:
-                startActivity(new Intent(this, OrderActivity.class));
+            case R.id.self_service_data:
+                startActivity(new Intent(this, SelfServiceDataActivity.class));
                 break;
             case R.id.user_info:
                 startActivity(new Intent(this, UserManagerActivity.class));
                 break;
-            case R.id.equipment_manager:
-                startActivity(new Intent(this, EquipmentActivity.class));
-                break;
             case R.id.system_manager:
                 startActivity(new Intent(this, SystemActivity.class));
                 break;
-            case R.id.meeting_shenpi:
-                startActivity(new Intent(this, MeetingShenPiActivity.class));
+            case R.id.all_service_data:
+                startActivity(new Intent(this, AllServiceDataActivity.class));
                 break;
             case R.id.logout:
                 MyApplication.userBean = null;

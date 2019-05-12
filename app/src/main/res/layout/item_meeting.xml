@@ -1,17 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:alpha="0.6"
+    android:orientation="vertical"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
 
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginLeft="16dp"
-        android:textSize="16dp"
+        android:layout_height="40dp"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
         android:gravity="center_vertical"
-        android:text="会议名称" />
+        android:text="司机师傅名称："
+        android:textSize="16dp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/mileage"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:gravity="center_vertical"
+        android:text="营运里程："
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/money"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:gravity="center_vertical"
+        android:text="营运金额："
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/times"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:gravity="center_vertical"
+        android:text="营运次数："
+        android:textSize="16dp" />
+
+</LinearLayout>

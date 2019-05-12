@@ -30,6 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etPassword;
     @BindView(R.id.rg)
     RadioGroup rg;
+    @BindView(R.id.et_phone)
+    EditText etPhone;
     private int checkedUserType = 0;
 
     @Override
@@ -65,12 +67,17 @@ public class RegisterActivity extends AppCompatActivity {
     private void register() {
         String strName = etUsername.getText().toString();
         String strPass = etPassword.getText().toString();
+        String phone = etPhone.getText().toString();
         if (TextUtils.isEmpty(strName)) {
             Toast.makeText(this, "请输入用户名", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(strPass)) {
             Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(phone)) {
+            Toast.makeText(this, "请输入手机号", Toast.LENGTH_SHORT).show();
             return;
         }
         UserBeanDao userBeanDao = MyApplication.getMyApplication().getDaoSession().getUserBeanDao();
@@ -84,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
         UserBean userBean = new UserBean();
         userBean.userName = strName;
         userBean.password = strPass;
+        userBean.phoneNumber = phone;
         userBean.type = checkedUserType;
         //注册
         userBeanDao.insert(userBean);

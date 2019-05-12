@@ -27,7 +27,8 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property UserName = new Property(1, String.class, "userName", false, "USER_NAME");
         public final static Property Password = new Property(2, String.class, "password", false, "PASSWORD");
-        public final static Property Type = new Property(3, int.class, "type", false, "TYPE");
+        public final static Property PhoneNumber = new Property(3, String.class, "phoneNumber", false, "PHONE_NUMBER");
+        public final static Property Type = new Property(4, int.class, "type", false, "TYPE");
     }
 
 
@@ -46,7 +47,8 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"USER_NAME\" TEXT," + // 1: userName
                 "\"PASSWORD\" TEXT," + // 2: password
-                "\"TYPE\" INTEGER NOT NULL );"); // 3: type
+                "\"PHONE_NUMBER\" TEXT," + // 3: phoneNumber
+                "\"TYPE\" INTEGER NOT NULL );"); // 4: type
     }
 
     /** Drops the underlying database table. */
@@ -73,7 +75,12 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
         if (password != null) {
             stmt.bindString(3, password);
         }
-        stmt.bindLong(4, entity.getType());
+ 
+        String phoneNumber = entity.getPhoneNumber();
+        if (phoneNumber != null) {
+            stmt.bindString(4, phoneNumber);
+        }
+        stmt.bindLong(5, entity.getType());
     }
 
     @Override
@@ -94,7 +101,12 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
         if (password != null) {
             stmt.bindString(3, password);
         }
-        stmt.bindLong(4, entity.getType());
+ 
+        String phoneNumber = entity.getPhoneNumber();
+        if (phoneNumber != null) {
+            stmt.bindString(4, phoneNumber);
+        }
+        stmt.bindLong(5, entity.getType());
     }
 
     @Override
@@ -108,7 +120,8 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // userName
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // password
-            cursor.getInt(offset + 3) // type
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // phoneNumber
+            cursor.getInt(offset + 4) // type
         );
         return entity;
     }
@@ -118,7 +131,8 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setUserName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setPassword(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setType(cursor.getInt(offset + 3));
+        entity.setPhoneNumber(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setType(cursor.getInt(offset + 4));
      }
     
     @Override

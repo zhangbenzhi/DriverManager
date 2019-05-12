@@ -24,6 +24,8 @@ public class UserManagerActivity extends AppCompatActivity {
     EditText etUsername;
     @BindView(R.id.et_password)
     EditText etPassword;
+    @BindView(R.id.et_phone)
+    EditText etPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class UserManagerActivity extends AppCompatActivity {
 
         etUsername.setText(MyApplication.userBean.userName);
         etPassword.setText(MyApplication.userBean.password);
+        etPhone.setText(MyApplication.userBean.phoneNumber);
     }
 
     @OnClick({R.id.update})
@@ -48,6 +51,8 @@ public class UserManagerActivity extends AppCompatActivity {
     private void update() {
         String strName = etUsername.getText().toString();
         String strPass = etPassword.getText().toString();
+        String strPhone = etPhone.getText().toString();
+
         if (TextUtils.isEmpty(strName)) {
             Toast.makeText(this, "请输入用户名", Toast.LENGTH_SHORT).show();
             return;
@@ -56,16 +61,21 @@ public class UserManagerActivity extends AppCompatActivity {
             Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (TextUtils.isEmpty(strPhone)) {
+            Toast.makeText(this, "请输入手机号", Toast.LENGTH_SHORT).show();
+            return;
+        }
         UserBeanDao userBeanDao = MyApplication.getMyApplication().getDaoSession().getUserBeanDao();
         List<UserBean> list = userBeanDao.queryBuilder()
                 .where(UserBeanDao.Properties.UserName.eq(strName))
                 .list();
-        if (list != null && list.size() > 0) {
-            Toast.makeText(this, "该用户名已存在，请修改", Toast.LENGTH_SHORT).show();
+        if (!MyApplication.userBean.userName.equals(strName) && list != null && list.size() > 0) {
+            Toast.makeText(this, "该用户名已存在，请更换", Toast.LENGTH_SHORT).show();
             return;
         }
         MyApplication.userBean.userName = strName;
         MyApplication.userBean.password = strPass;
+        MyApplication.userBean.phoneNumber = strPhone;
         try {
             userBeanDao.update(MyApplication.userBean);
             Toast.makeText(this, "修改用户信息成功", Toast.LENGTH_SHORT).show();

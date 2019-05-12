@@ -6,30 +6,20 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv"
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
     <TextView
         android:id="@+id/alert"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="暂无设备"
+        android:text="暂无营运数据"
         android:gravity="center"
         android:textSize="16dp"
         android:visibility="gone"
         />
-
-
-    <ImageView
-        android:id="@+id/add"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/plus" />
 
 
 </RelativeLayout>
